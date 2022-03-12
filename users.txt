@@ -1,0 +1,5 @@
+login=shahzod|password=123456|name=shahzod|age=21|profession=idonotknow:)
+login=asad|password=654321|name=asad|age=19|profession=chief
+login=elbek|password=qwerty|name=elbek|age=21|profession=driver
+login=akmal|password=ytrewq|name=akmal|age=15|profession=coder
+
