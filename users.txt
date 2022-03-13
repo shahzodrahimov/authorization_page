@@ -1,0 +1,4 @@
+login=shahzod21|password=123456|name=shahzod|surname=rahimov|age=21
+login=asad|password=654321|name=asad|surname=sayfuddinov|age=19
+login=elbek|password=123456|name=elbek|surname=inomov|age=21
+login=aki216|password=howudoinbro:)|name=akmal|surname=rahimov|age=16
