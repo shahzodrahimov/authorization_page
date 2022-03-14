@@ -55,11 +55,13 @@ class Authorization:
             enter_opt = input(self.settings_msg()).strip()
 
         if enter_opt == '1':
-            self.delete_account()
+            self.account_info()
         elif enter_opt == '2':
             self.update_login()
         elif enter_opt == '3':
             self.update_password()
+        elif enter_opt == '4':
+            self.delete_account()
         else:
             self.menu_page()
 
@@ -69,6 +71,7 @@ class Authorization:
         name = input("Enter your name: ").lower().strip()
         surname = input("Enter your surname: ").lower().strip()
         age = input("Enter your age: ").strip()
+        phone = input("Enter your phone number: ").strip()
         login = input("Enter your login: ").strip()
 
         while not self.login_is_correct(login):
@@ -88,7 +91,7 @@ class Authorization:
             password = input("Your password: ").strip()
 
         with open(self.file_name, 'a') as file:
-            file.write(f"login={login}|password={password}|name={name}|surname={surname}|age={age}")
+            file.write(f"login={login}|password={password}|name={name}|surname={surname}|age={age}|phone_number={phone}\n")
 
         self.menu_page()
 
@@ -151,10 +154,11 @@ class Authorization:
         return '''
             Please select one of the options below:
 
-            [1] Delete account
+            [1] Account info
             [2] Update login
             [3] Update password
-            [4] Back
+            [4] Delete account
+            [5] Back
             
             Enter number: '''
 
@@ -194,7 +198,7 @@ class Authorization:
 
     @staticmethod
     def login_is_correct(login_):
-        return len(login_) > 3 and login_.isalnum()
+        return len(login_) > 3 and login_.isalnum() or '_' in login_
 
     @staticmethod
     def pasw_is_correct(password_):
