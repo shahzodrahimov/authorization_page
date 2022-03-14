@@ -107,7 +107,7 @@ class Authorization:
     def update_login(self):
         pass
 
-    # Update password -> Shahzod
+    # Update password ->
     def update_password(self):
         pass
 
