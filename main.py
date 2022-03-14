@@ -5,8 +5,8 @@ from os import system
 class Authorization:
     def __init__(self, user_file="users.txt"):
         system("clear")
-        self.login = 'golang_dev'
-        self.password = '654321'
+        self.login = None
+        self.password = None
         self.file_name = user_file
         self.all_users = []
         self.initial_page()
@@ -70,6 +70,7 @@ class Authorization:
     # Registration -> Shahzod
     def register(self):
         self.get_all_users()
+        system("clear")
         name = input("Enter your name: ").lower().strip()
         surname = input("Enter your surname: ").lower().strip()
         age = input("Enter your age: ").strip()
@@ -98,6 +99,7 @@ class Authorization:
 
         system("clear")
         print("You are successfully registered!")
+        self.login, self.password = login, password
         self.menu_page()
 
     # Log in -> Jafar
@@ -155,11 +157,16 @@ class Authorization:
 
     # Account info -> Jafar
     def account_info(self):
+        self.all_users.clear()
         self.get_all_users()
         for user in self.all_users:
             if user["login"] == self.login and user["password"] == self.password:
+                system("clear")
                 print(f"Name: {user['name'].title()}\nSurname: {user['surname'].title()}\nAge: {user['age']}\n"
                       f"Phone: +998{user['phone_number']} ")
+
+        input("\nTo back press anything: ")
+        self.settings_page()
 
     # Delete account -> Shahzod
     def delete_account(self):

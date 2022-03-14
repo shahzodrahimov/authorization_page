@@ -3,3 +3,4 @@ login=golang_dev|password=654321|name=jafar|surname=shodiyev|age=23|phone_number
 login=sodiqdev|password=qwerty|name=sodiqjon|surname=oxunov|age=27|phone_number=916141195
 login=eltn|password=eltn2028|name=elbek|surname=inomov|age=21|phone_number=902082028
 login=aki16|password=123456|name=akmal|surname=rahimov|age=16|phone_number=997654321
+login=adam|password=450232|name=asadbek|surname=sayfuddinov|age=20|phone_number=914562341
