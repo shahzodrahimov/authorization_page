@@ -113,7 +113,7 @@ class Authorization:
 
     # Account info -> Jafar
     def account_info(self):
-        print("niandkasfjjksdhfkhakfhakdhfkjadhfjhghag")
+        pass
 
     # Delete account -> Shahzod
     def delete_account(self):
