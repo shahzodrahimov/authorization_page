@@ -5,8 +5,8 @@ from os import system
 class Authorization:
     def __init__(self, user_file="users.txt"):
         system("clear")
-        self.login = None
-        self.password = None
+        self.login = 'sodiq'
+        self.password = 'qwerty'
         self.file_name = user_file
         self.all_users = []
         self.initial_page()
@@ -15,7 +15,8 @@ class Authorization:
     def initial_page(self):
         ent_sys = input(self.welcome_msg()).strip()
 
-        while not self.file_empty() and ent_sys not in ['1', '2', '3'] or self.file_empty() and ent_sys not in ['1', '2']:
+        while not self.file_empty() and ent_sys not in ['1', '2', '3'] or self.file_empty() and ent_sys not in ['1',
+                                                                                                                '2']:
             system("clear")
             print("Invalid input!")
             ent_sys = input(self.welcome_msg()).strip()
@@ -23,13 +24,13 @@ class Authorization:
         if ent_sys == '1':
             self.register()
         elif not self.file_empty() and ent_sys == '2':
+            system("clear")
             self.log_in()
         else:
             self.bye()
 
     # Menu page -> Shahzod
     def menu_page(self):
-        system("clear")
         ent_otp = input(self.menu_page_msg()).strip()
 
         while ent_otp not in ['1', '2', '3']:
@@ -49,7 +50,7 @@ class Authorization:
         system("clear")
         enter_opt = input(self.settings_msg()).strip()
 
-        while enter_opt not in ['1', '2', '3', '4']:
+        while enter_opt not in ['1', '2', '3', '4', '5']:
             system("clear")
             print("Invalid input!")
             enter_opt = input(self.settings_msg()).strip()
@@ -63,6 +64,7 @@ class Authorization:
         elif enter_opt == '4':
             self.delete_account()
         else:
+            system("clear")
             self.menu_page()
 
     # Registration -> Shahzod
@@ -91,8 +93,11 @@ class Authorization:
             password = input("Your password: ").strip()
 
         with open(self.file_name, 'a') as file:
-            file.write(f"login={login}|password={password}|name={name}|surname={surname}|age={age}|phone_number={phone}\n")
+            file.write(
+                f"login={login}|password={password}|name={name}|surname={surname}|age={age}|phone_number={phone}\n")
 
+        system("clear")
+        print("You are successfully registered!")
         self.menu_page()
 
     # Log in -> Jafar
@@ -107,7 +112,7 @@ class Authorization:
     def update_login(self):
         pass
 
-    # Update password ->
+    # Update password -> Shahzod
     def update_password(self):
         pass
 
@@ -117,7 +122,19 @@ class Authorization:
 
     # Delete account -> Shahzod
     def delete_account(self):
-        pass
+        with open(self.file_name) as file:
+            users = file.readlines()
+
+        for user in users:
+            if f"login={self.login}|" in user and f"password={self.password}|" in user:
+                users.remove(user)
+
+        with open(self.file_name, 'w') as file:
+            for user in users:
+                file.write(user)
+
+        system("clear")
+        self.initial_page()
 
     def welcome_msg(self):
         if self.file_empty():
@@ -126,7 +143,7 @@ class Authorization:
 
             [1] Register
             [2] Exit
-            
+
             Enter number: '''
         else:
             return '''
@@ -135,7 +152,7 @@ class Authorization:
             [1] Register
             [2] Log in
             [3] Exit
-            
+
             Enter number: '''
 
     @staticmethod
@@ -146,7 +163,7 @@ class Authorization:
             [1] Settings
             [2] Log out
             [3] Exit
-            
+
             Enter number: '''
 
     @staticmethod
@@ -159,7 +176,7 @@ class Authorization:
             [3] Update password
             [4] Delete account
             [5] Back
-            
+
             Enter number: '''
 
     @staticmethod
