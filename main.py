@@ -5,8 +5,8 @@ from os import system
 class Authorization:
     def __init__(self, user_file="users.txt"):
         system("clear")
-        self.login = None
-        self.password = None
+        self.login = 'golang_dev'
+        self.password = '654321'
         self.file_name = user_file
         self.all_users = []
         self.initial_page()
@@ -155,7 +155,11 @@ class Authorization:
 
     # Account info -> Jafar
     def account_info(self):
-        pass
+        self.get_all_users()
+        for user in self.all_users:
+            if user["login"] == self.login and user["password"] == self.password:
+                print(f"Name: {user['name'].title()}\nSurname: {user['surname'].title()}\nAge: {user['age']}\n"
+                      f"Phone: +998{user['phone_number']} ")
 
     # Delete account -> Shahzod
     def delete_account(self):
@@ -246,7 +250,8 @@ class Authorization:
                         "password": row.split("|")[1].split("=")[1],
                         "name": row.split("|")[2].split("=")[1],
                         "surname": row.split("|")[3].split("=")[1],
-                        "age": row.split("|")[4].split("=")[1]
+                        "age": row.split("|")[4].split("=")[1],
+                        "phone_number": row.split("|")[5].split("=")[1]
                     }
                 )
 
