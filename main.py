@@ -68,7 +68,7 @@ class Authorization:
     # Registration -> Shahzod
     def register(self):
         self.get_all_users()
-        name = input("Enter your name: ").lower().strip()
+        name = input("Enter your  name: ").lower().strip()
         surname = input("Enter your surname: ").lower().strip()
         age = input("Enter your age: ").strip()
         phone = input("Enter your phone number: ").strip()
