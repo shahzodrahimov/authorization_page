@@ -5,8 +5,8 @@ from os import system
 class Authorization:
     def __init__(self, user_file="users.txt"):
         system("clear")
-        self.login = 'sodiq'
-        self.password = 'qwerty'
+        self.login = None
+        self.password = None
         self.file_name = user_file
         self.all_users = []
         self.initial_page()
@@ -104,17 +104,54 @@ class Authorization:
     def log_in(self):
         self.menu_page()
 
-    # Log out -> Jafar
+    # Log out -> Shahzod
     def log_out(self):
-        pass
+        system("clear")
+        self.login = self.password = None
+        self.all_users.clear()
+        self.initial_page()
 
     # Update login -> Shahzod
     def update_login(self):
-        pass
+        system("clear")
+        new_login = input("Enter your new login: ")
+
+        while not self.login_is_correct(new_login) or new_login == self.login:
+            system("clear")
+            self.wrong_log_msg()
+            new_login = input("New login: ")
+
+        with open(self.file_name) as file:
+            users = file.read().replace(f"login={self.login}|password={self.password}",
+                                        f"login={new_login}|password={self.password}")
+
+        with open(self.file_name, 'w') as file:
+            file.write(users)
+
+        self.login = new_login
+        print("Your login is successfully updated!")
+        self.settings_page()
 
     # Update password -> Shahzod
     def update_password(self):
-        pass
+        system("clear")
+        new_pass = input("New password: ")
+
+        while not self.pasw_is_correct(new_pass) or new_pass == self.password:
+            system("clear")
+            self.wrong_pass_msg()
+            new_pass = input("New password: ")
+
+        with open(self.file_name) as file:
+            users = file.read().replace(f"login={self.login}|password={self.password}",
+                                        f"login={self.login}|password={new_pass}")
+
+        with open(self.file_name, 'w') as file:
+            file.write(users)
+
+        self.password = new_pass
+        print("Your password is successfully updated!")
+        self.settings_page()
 
     # Account info -> Jafar
     def account_info(self):
