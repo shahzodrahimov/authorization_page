@@ -1,4 +1,3 @@
-import os
 import sys
 from os import system
 
@@ -89,7 +88,7 @@ class Authorization:
             login = input("Please write another one: ").strip()
 
         password = input("Enter your password: ").strip()
-        while not self.pasw_is_correct(password):
+        while not self.password_is_correct(password):
             system("clear")
             self.wrong_pass_msg()
             password = input("Your password: ").strip()
@@ -158,7 +157,7 @@ class Authorization:
         system("clear")
         new_pass = input("New password: ")
 
-        while not self.pasw_is_correct(new_pass) or new_pass == self.password:
+        while not self.password_is_correct(new_pass) or new_pass == self.password:
             system("clear")
             self.wrong_pass_msg()
             new_pass = input("New password: ")
@@ -286,7 +285,7 @@ class Authorization:
         return len(login_) > 3 and login_.isalnum() or '_' in login_
 
     @staticmethod
-    def pasw_is_correct(password_):
+    def password_is_correct(password_):
         return len(password_) > 5 and ' ' not in password_
 
     def login_is_exist(self, login_):
