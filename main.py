@@ -106,21 +106,24 @@ class Authorization:
     # Log in -> Jafar
     def log_in(self):
         a = 1
-        login = input("your login: ").strip()
-        password = input("your password: ").strip()
+        login_ = input("Enter your login: ").strip()
+        password_ = input("Enter your password: ").strip()
         while a:
-          system("clear")
-
-          self.all_users.clear()
-          self.get_all_users()
-          for user in self.all_users:
-                if user["login"] == login and user["password"] == password:
+            system("clear")
+            self.all_users.clear()
+            self.get_all_users()
+            for user in self.all_users:
+                if user["login"] == login_ and user["password"] == password_:
                     a = 0
+                    self.login = login_
+                    self.password = password_
                     self.menu_page()
-          print("bunaqa login yo password yoq")
-          login = input("your login: ").strip()
-          password = input("your password: ").strip()
+            print("Login or password invalid")
+            login_ = input("your login: ").strip()
+            password_ = input("your password: ").strip()
 
+            self.login = login_
+            self.password = password_
 
     # Log out -> Shahzod
     def log_out(self):
